@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title></title>
+  </head>
+  <body>
+    <style> .boxy  { border: 4px solid black; font-size: 25px; font-weight: bolder; background-color: black; }</style>
+  <div class="container">
+    <nav class="navbar navbar-dark bg-dark navbar-static-top boxy">
+          <ul class="nav navbar-nav">
+            {% if user.is_authenticated %}
+            <li> <a class="navbar-link" href="{% url "app6_user:index" %}">UDEMY</a></li>
+            <li> <a class="navbar-link" href="{% url "admin:index" %}">Admin Page</a></li>
+            <li> <a class="navbar-link" href="{% url "app5:relative_url" %}">Go to RELATIVE_URL</a></li>
+            <li> <a class="navbar-link" href="{% url "app5:other" %}">Go to other page</a></li>
+            <li> <a class="navbar-link" href="{% url "app6_user:registration" %}">Registratrion Page</a></li>
+            <li> <a class="navbar-link" href="{% url "app6_user:user_logout" %}">Logout</a> </li>
+            {% else %}
+              <li> <a class="navbar-link" href="{% url "app6_user:user_login" %}">Login</a> </li>
+            {% endif %}
+          </ul>
+    </nav>
+  <div class="jumbotron">
+      {% block body_block %}
+        <h1> Welcome to Index HTML page </h1>
+        <h2> {{ FA|cut:"on"}}  </h2>
+       <h2>  {{ TG|add:"-99" }}  </h2>
+       <h3> ADD CNACLD: LP=0, PFX=K'{{B}}, RSC={{TG}}, RSSC=0, SDES={{FA}}; </h3>
+       <h3> ADD SIPTG: TG={{TG}}, PRO=SIP;  </h3>
+      {% endblock %}
+  </div>
+  </div>
+  </body>
+</html>
